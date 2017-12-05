@@ -11,6 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+//Main page
+Route::get('/', function(){
+    return view('main');
 });
+
+
+
+
+//Route::resource('events','EventController');
+
+//User routes
+Route::get('admin/login', function() {
+    return view('admin.login');
+});
+
+Route::post('/authUser','UserController@login');
