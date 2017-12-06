@@ -13,18 +13,17 @@
 
 
 //Main page
-Route::get('/', function(){
-    return view('main');
-});
-
-
+Route::get('/', 'PagesController@home');
 
 
 //Route::resource('events','EventController');
 
+
 //User routes
-Route::get('admin/login', function() {
-    return view('admin.login');
-});
+Route::get('login','PagesController@login');
+Route::get('register', 'PagesController@register');
+Route::get('dashboard','PagesController@dashboard');
+
 
 Route::post('/authUser','UserController@login');
+Route::post('/register','UserController@register');
