@@ -13,17 +13,26 @@
 
 
 //Main page
-Route::get('/', 'PagesController@home');
+Route::get('/',function(){
+
+    return view('main');
+});
 
 
 //Route::resource('events','EventController');
 
 
 //User routes
-Route::get('login','PagesController@login');
-Route::get('register', 'PagesController@register');
-Route::get('dashboard','PagesController@dashboard');
+
+Route::middleware('auth')->group(function (){
+    Route::get('dashboard','DashboardController@home');
+    Route::post('dashboard/add_event','EventController@store')->name('add_event');
+    Route::get('dashboard/del_event','DashboardController@delete');
+    Route::get('dashboard/del_user','DashboardController@delete_user');
+    Route::get('dashboard/profile','DashboardController@profile');
+});
 
 
-Route::post('/authUser','UserController@login');
-Route::post('/register','UserController@register');
+Auth::routes();
+
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
