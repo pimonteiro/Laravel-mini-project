@@ -12,8 +12,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   
+
 </head>
 <body>
+    <script type="text/javascript" src="{{ URL::asset('js/form.js') }}"></script>
     <div id="app">
         @include('inc.navbar')
         <div class="container">

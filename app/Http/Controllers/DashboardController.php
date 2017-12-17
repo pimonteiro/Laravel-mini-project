@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function home(){
-        return view('dashboard');
+        $events = Event::all()->all();
+        dd($events);
+
+        return view('dashboard',compact('events'));
     }
 
 
-    public function profile(){
-        return view('mypage');
-    }
 }

@@ -18,9 +18,7 @@ Route::get('/',function(){
     return view('main');
 });
 
-
-//Route::resource('events','EventController');
-
+Route::get('dashboard/events/{name}','EventController@show');
 
 //User routes
 
@@ -29,7 +27,7 @@ Route::middleware('auth')->group(function (){
     Route::post('dashboard/add_event','EventController@store')->name('add_event');
     Route::get('dashboard/del_event','DashboardController@delete');
     Route::get('dashboard/del_user','DashboardController@delete_user');
-    Route::get('dashboard/profile','DashboardController@profile');
+    Route::get('dashboard/profile','EventController@profile');
 });
 
 

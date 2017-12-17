@@ -14,7 +14,7 @@ class CreateEventUser extends Migration
     public function up()
     {
         //Creating Pivot Table
-        Schema::create('ev_us', function (Blueprint $table) {
+        Schema::create('event_user', function (Blueprint $table) {
             $table->integer('event_id');
             $table->integer('user_id');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateEventUser extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ev_us');
+        Schema::dropIfExists('event_user');
     }
 }
