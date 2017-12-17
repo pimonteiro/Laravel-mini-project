@@ -37,6 +37,8 @@ class EventController extends Controller
 
             $event->save();
 
+            $user->n_badges += 1;
+            $user->save();
             $user->events()->syncWithoutDetaching($event->id);
         }
 
