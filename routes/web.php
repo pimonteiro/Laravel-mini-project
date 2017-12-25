@@ -25,8 +25,8 @@ Route::get('dashboard/events/{name}','EventController@show');
 Route::middleware('auth')->group(function (){
     Route::get('dashboard','DashboardController@home');
     Route::post('dashboard/add_event','EventController@store')->name('add_event');
-    Route::get('dashboard/del_event','DashboardController@delete');
-    Route::get('dashboard/del_user','DashboardController@delete_user');
+    Route::get('dashboard/del_event/{name}','EventController@delete_event');
+    Route::get('dashboard/del_user','EventController@delete_user');
     Route::get('dashboard/profile','EventController@profile');
 });
 

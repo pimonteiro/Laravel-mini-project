@@ -10,4 +10,6 @@
             <li>{{ $user->first_name }} {{ $user->last_name }}</li>
         @endforeach
     </ul>
+
+    <h2><a href="/dashboard/del_event/{{ $name }}">Delete Participation</a></h2>
 @endsection

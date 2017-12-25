@@ -25,6 +25,8 @@ class EventController extends Controller
             $event = Event::whereName_event(request('name_event'))->first();
             $check = $event->users->where('pivot.user_id',$user->id)->all();
             if ($check == null){
+                $user->n_badges += 1;
+                $user->save();
                 $user->events()->syncWithoutDetaching($event->id);
             }
             else redirect('/dashboard')->withErrors($validator);
@@ -62,5 +64,31 @@ class EventController extends Controller
         
     }
 
+    public function delete_event($name) {
+        $user = User::find(Auth::user()->id);
+        $event = Event::whereName_event($name)->first()->id;
 
+        $user->events()->detach($event);
+        
+        $user->n_badges -= 1;
+        $user->save();
+
+        return redirect('/dashboard');
+
+    }
+
+    public function delete_user() {
+        $user = User::find(Auth::user()->id);
+
+        //delete_events($user);
+
+        $user->events()->detach();
+
+        //$user->delete();
+
+        return redirect('/');
+
+    }
+
+    
 }
